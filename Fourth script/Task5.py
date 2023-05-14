@@ -14,19 +14,10 @@
 # [4] => 1 вышел, 4 остался последним т.е. выжившим - это наш ответ survivor.
 
 def josephus_task(num_people, kill_num):
-    alive = [True] * num_people
-    num_survivors, survivor, index = num_people, 0, 0
-    while num_survivors:
-        if alive[survivor]:
-            index += 1
-            if index == kill_num:
-                num_survivors = num_survivors - 1
-                if not num_survivors:
-                    return survivor + 1
-                else:
-                    alive[survivor] = False
-                    index = 0
-        survivor = (survivor + 1) % num_people
+    survivor = 0
+    for i in range(1, num_people + 1):
+        survivor = (survivor + kill_num) % i
+    survivor = survivor +1
     return survivor
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
