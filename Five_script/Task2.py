@@ -16,13 +16,13 @@ def repeats(our_str):
     # Здесь нужно написать код
     count = {}
     new_str = ''
-    for symbol in our_str:
-        if symbol in count:
-            count[symbol] += 1
-            new_str += f'{symbol}_{count[symbol]}'
+    for j in our_str:
+        if j in count:
+            count[j] += 1
+            new_str += f'{j}_{count[j]}'
         else:
-            count[symbol] = 1
-            new_str += symbol + '_1'
+            count[j] = 1
+            new_str += j + '_1'
     return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
