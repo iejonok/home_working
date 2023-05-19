@@ -14,7 +14,7 @@ def letter_stat(our_str):
     :return:letters_dict
     """
     # Здесь нужно написать код
-    letters_dict = {j: our_str.count(j) for j in our_str}
+    letters_dict = {key: our_str.count(key) for key in our_str}
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
