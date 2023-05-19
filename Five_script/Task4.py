@@ -20,24 +20,20 @@ def scrabble(word):
     :return: points
     """
     # Здесь нужно написать код
+    weight_char = {
+        'а': 1, 'в': 1, 'е': 1, 'ё': 1, 'и': 1, 'н': 1, 'о': 1, 'р': 1, 'с': 1, 'т': 1,
+        'д': 2, 'к': 2, 'л': 2, 'м': 2, 'п': 2, 'у': 2,
+        'б': 3, 'г': 3, 'ь': 3, 'я': 3,
+        'й': 4, 'ы': 4,
+        'ж': 5, 'з': 5, 'х': 5, 'ц': 5, 'ч': 5,
+        'ф': 8, 'ш': 8, 'э': 8, 'ю': 8,
+        'щ': 10,
+        'ъ': 15
+    }
     points = 0
-    for char in word.lower():
-        if char in ['а', 'в', 'е', 'ё', 'и', 'н', 'о', 'р', 'с', 'т']:
-            points += 1
-        elif char in ['д', 'к', 'л', 'м', 'п', 'у']:
-            points += 2
-        elif char in ['б', 'г', 'ь', 'я']:
-            points += 3
-        elif char in ['й', 'ы']:
-            points += 4
-        elif char in ['ж', 'з', 'х', 'ц', 'ч']:
-            points += 5
-        elif char in ['ф', 'ш', 'э', 'ю']:
-            points += 8
-        elif char == 'щ':
-            points += 10
-        elif char == 'ъ':
-            points += 15
+    word_list = list(word)
+    for char in word_list:
+        points += int(weight_char.get(char))
     return points
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

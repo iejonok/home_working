@@ -17,26 +17,22 @@ def to_roman(val):
     :return: roman_str
     """
     # Здесь нужно написать код
-    roman_numerals = {
-        1000: 'M',
-        900: 'CM',
-        500: 'D',
-        400: 'CD',
-        100: 'C',
-        90: 'XC',
-        50: 'L',
-        40: 'XL',
-        10: 'X',
-        9: 'IX',
-        5: 'V',
-        4: 'IV',
-        1: 'I'
-    }
+
     roman_str = ''
-    for year, numeral in roman_numerals.items():
-        while val >= year:
-            roman_str += numeral
-            val -= year
+    num = [1000, 500, 100, 50, 10, 5, 1]
+    rom = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
+    i = 0
+    while val > 0:
+        for plug in range(val // num[i]):
+            roman_str += rom[i]
+            val -= num[i]
+        i += 1
+    roman_str = roman_str.replace('DCCCC', 'CM')
+    roman_str = roman_str.replace('CCCC', 'CD')
+    roman_str = roman_str.replace('LXXXX', 'XC')
+    roman_str = roman_str.replace('XXXX', 'XL')
+    roman_str = roman_str.replace('VIIII', 'IX')
+    roman_str = roman_str.replace('IIII', 'IV')
     return roman_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
