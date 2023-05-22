@@ -17,16 +17,22 @@ def to_roman(val):
     :return: roman_str
     """
     # Здесь нужно написать код
-
+    roman_numerals = {
+        1: 'I',
+        5: 'V',
+        10: 'X',
+        50: 'L',
+        100: 'C',
+        500: 'D',
+        1000: 'M'
+    }
     roman_str = ''
-    num = [1000, 500, 100, 50, 10, 5, 1]
-    rom = ['M', 'D', 'C', 'L', 'X', 'V', 'I']
-    i = 0
-    while val > 0:
-        for plug in range(val // num[i]):
-            roman_str += rom[i]
-            val -= num[i]
-        i += 1
+    for weight, roman_char in sorted(roman_numerals.items(), reverse=True):
+        while val >= weight:
+            val -= weight
+            roman_str += roman_char
+            if val <= 0:
+                break
     roman_str = roman_str.replace('DCCCC', 'CM')
     roman_str = roman_str.replace('CCCC', 'CD')
     roman_str = roman_str.replace('LXXXX', 'XC')
@@ -34,6 +40,7 @@ def to_roman(val):
     roman_str = roman_str.replace('VIIII', 'IX')
     roman_str = roman_str.replace('IIII', 'IV')
     return roman_str
+
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
@@ -43,7 +50,6 @@ data = [1133, 2224, 1938, 1817, 2505, 391, 3743, 1634, 699, 1666, 1494, 1444]
 test_data = [
     "MCXXXIII", "MMCCXXIV", "MCMXXXVIII", "MDCCCXVII", "MMDV", "CCCXCI", 'MMMDCCXLIII', 'MDCXXXIV', 'DCXCIX', 'MDCLXVI',
     'MCDXCIV', 'MCDXLIV']
-
 
 for i, d in enumerate(data):
     assert to_roman(d) == test_data[i], f'С набором {d} есть ошибка, не проходит проверку'
