@@ -27,18 +27,41 @@ def to_roman(val):
         1000: 'M'
     }
     roman_str = ''
-    for weight, roman_char in sorted(roman_numerals.items(), reverse=True):
-        while val >= weight:
-            val -= weight
-            roman_str += roman_char
-            if val <= 0:
-                break
-    roman_str = roman_str.replace('DCCCC', 'CM')
-    roman_str = roman_str.replace('CCCC', 'CD')
-    roman_str = roman_str.replace('LXXXX', 'XC')
-    roman_str = roman_str.replace('XXXX', 'XL')
-    roman_str = roman_str.replace('VIIII', 'IX')
-    roman_str = roman_str.replace('IIII', 'IV')
+    if val > 1000:
+        num_m = val // 1000
+        roman_str += roman_numerals[1000] * num_m
+        val %= 1000
+    if val > 100:
+        num_c = val // 100
+        if num_c == 9:
+            roman_str += 'CM'
+        elif num_c >= 5:
+            roman_str += 'D' + 'C' * (num_c - 5)
+        elif num_c == 4:
+            roman_str += 'CD'
+        else:
+            roman_str += 'C' * num_c
+        val %= 100
+    if val > 10:
+        num_x = val // 10
+        if num_x == 9:
+            roman_str += 'XC'
+        elif num_x >= 5:
+            roman_str += 'L' + 'X' * (num_x - 5)
+        elif num_x == 4:
+            roman_str += 'XL'
+        else:
+            roman_str += 'X' * num_x
+        val %= 10
+    if val > 0:
+        if val == 9:
+            roman_str += 'IX'
+        elif val >= 5:
+            roman_str += 'V' + 'I' * (val - 5)
+        elif val == 4:
+            roman_str += 'IV'
+        else:
+            roman_str += 'I' * val
     return roman_str
 
 
