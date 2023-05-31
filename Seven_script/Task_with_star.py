@@ -24,23 +24,24 @@ class RomanNums:
             "M": 1000
         }
         result = 0
-        i = 0
-        while i < len(self.num):
-            if i == len(self.num) - 1:
-                result += roman_to_arabic_dict[self.num[i]]
+        counter = 0
+        while counter < len(self.num):
+            if counter == len(self.num) - 1:
+                result += roman_to_arabic_dict[self.num[counter]]
                 break
-            if roman_to_arabic_dict[self.num[i]] >= roman_to_arabic_dict[self.num[i+1]]:
-                result += roman_to_arabic_dict[self.num[i]]
-                i += 1
+            if roman_to_arabic_dict[self.num[counter]] >= roman_to_arabic_dict[self.num[counter + 1]]:
+                result += roman_to_arabic_dict[self.num[counter]]
+                counter += 1
             else:
-                result += roman_to_arabic_dict[self.num[i+1]] - roman_to_arabic_dict[self.num[i]]
-                i += 2
+                result += roman_to_arabic_dict[self.num[counter + 1]] - roman_to_arabic_dict[self.num[counter]]
+                counter += 2
         return result
 
     def is_palindrome(self):
-        st = str(self.from_roman())
-        return st == st[-1::-1]
-    
+        palindrom_str = str(self.from_roman())
+        return palindrom_str == palindrom_str[-1::-1]
+
+
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
@@ -67,7 +68,6 @@ data = [RomanNums('MMMCCLXIII').from_roman,
         RomanNums('XXX').is_palindrome,
         RomanNums('D').is_palindrome,
         ]
-
 
 test_data = [3263, 134, 86, 1405, 978, 3404, 910, 2388, 2008, 1179, 3795, 988, 999, 444,
              True, True, False, False, True, True, False, False]
