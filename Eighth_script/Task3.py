@@ -21,7 +21,7 @@ def segment(p1, p2):
     try:
         return x1 + y1 + x2 + y2
     except TypeError as e:
-        return str(e)[-1::-1]
+        return str(e)[::-1]
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 

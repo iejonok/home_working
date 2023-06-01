@@ -27,13 +27,12 @@ def treatment_sum(our_tuple):
     try:
         if len(our_tuple) > 2:
             raise Exception('Много данных')
-        if len(our_tuple) < 2:
-            return 'Недостаточно данных'
-        else:
-            a, b = our_tuple
-            return a + b
+        a, b = our_tuple
+        return a + b
     except TypeError:
         return 'Нельзя сложить эти данные'
+    except ValueError:
+        return 'Недостаточно данных'
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 

@@ -20,15 +20,21 @@ import unittest  # Не удалять
 class Trigon:
     def __init__(self, *args):
         self.sides = []
+        self.check_data_correctness(*args)
+        self.check_is_triangle()
+
+    def check_data_correctness(self, *args):
         for arg in args:
             if not isinstance(arg, (int, float)):
                 raise TypeError('Стороны должны быть числами')
             elif arg <= 0:
                 raise ValueError('Стороны должны быть положительными')
             self.sides.append(arg)
-        self.sides = sorted(self.sides)
         if len(self.sides) != 3:
             raise IndexError(f'Передано {len(self.sides)} аргументов, а ожидается 3')
+
+    def check_is_triangle(self):
+        self.sides = sorted(self.sides)
         if self.sides[0] + self.sides[1] <= self.sides[2]:
             raise Exception('Не треугольник')
 
