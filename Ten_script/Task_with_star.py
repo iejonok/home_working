@@ -9,4 +9,4 @@ import pytest
 def test(request):
     marker = request.node.get_closest_marker('id_check')
     arguments = marker.args
-    print(*arguments)
+    print('\n', ', '.join(map(str, arguments)))
