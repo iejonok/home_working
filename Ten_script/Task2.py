@@ -18,26 +18,26 @@ def all_division(*arg1):
 
 
 @pytest.mark.smoke
-def test_div():
+def test_div_by_positive_numbers():
     assert all_division(8, 2) == 4
 
 
 @pytest.mark.smoke
-def test_div_negative_1():
+def test_div_by_negative_and_positive():
     assert all_division(-15, 3) == -5
 
 
 @pytest.mark.acceptance
-def test_div2():
+def test_div_by_positive_numbers_three_times():
     assert all_division(8, 2, 2, 2) == 1
 
 
 @pytest.mark.acceptance
-def test_div3():
+def test_div_by_zero_should_raise_exception():
     with pytest.raises(ZeroDivisionError):
         all_division(8, 0)
 
 
 @pytest.mark.acceptance
-def test_div_negative_2():
+def test_div_by_two_negative_numbers():
     assert all_division(-8, -2) == 4
