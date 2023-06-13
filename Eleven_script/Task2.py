@@ -33,7 +33,7 @@ driver.find_element(By.CSS_SELECTOR, selector).send_keys('Константино
 time.sleep(2)
 driver.find_element(By.CSS_SELECTOR, selector).send_keys(Keys.ENTER)
 time.sleep(4)
-letter = 'va.egorovich'
+letter = 'Проверка.'
 driver.find_element(By.CSS_SELECTOR, 'div p.textEditor_Viewer__Paragraph').send_keys(letter, Keys.CONTROL + Keys.ENTER)
 time.sleep(4)
 driver.find_element(By.CSS_SELECTOR, 'div.msg-dialogs-item__title.ws-flexbox.ws-justify-content-start.ws-flex-nowrap.ws-align-items-baseline').click()
